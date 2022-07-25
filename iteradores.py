@@ -2,6 +2,9 @@ from shutil import register_unpack_format
 import time
 
 class FiboIter():
+    
+    def __init__(self, maxN:int):
+        self.maxN = maxN
 
     def __iter__(self):
         self.n1 = 0
@@ -10,7 +13,9 @@ class FiboIter():
         return self
 
     def __next__(self):
-        if self.counter == 0:
+        if self.counter >= self.maxN:
+            raise StopIteration
+        elif self.counter == 0:
             self.counter += 1
             return self.n1
         elif self.counter == 1:
@@ -23,9 +28,10 @@ class FiboIter():
             self.n1, self.n2 = self.n2, self.aux
             self.counter += 1
             return self.aux
+            return max
 
 if __name__ == "__main__":
-    fibonacci = FiboIter()
+    fibonacci = FiboIter(5)
 
     for element in fibonacci:
         print(element)
