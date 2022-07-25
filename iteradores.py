@@ -28,7 +28,6 @@ class FiboIter():
             self.n1, self.n2 = self.n2, self.aux
             self.counter += 1
             return self.aux
-            return max
 
 if __name__ == "__main__":
     fibonacci = FiboIter(5)
